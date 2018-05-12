@@ -3,6 +3,7 @@
 
 #include "network_driver.h"
 #include "network_monitor.h"
+#include "tap.h"
 #include <pthread.h>
 #include <string>
 
@@ -19,8 +20,9 @@ class NetworkController
     int LC_pid;
     int BE_pid;
     pthread_t run_thread;
+    Tap* tap;
 
-    NetworkController();
+    NetworkController(Tap* tap);
     ~NetworkController();
 
     void set_LC_procs(int pid);

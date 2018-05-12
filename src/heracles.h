@@ -40,13 +40,13 @@ class Heracles {
         console = new Console(tap);
 
         //cm_ctr = new CoreMemoryController(tap, puller);
-        net_ctr = new NetworkController();
+        net_ctr = new NetworkController(tap);
         t_ctr = new TopController(tap, puller);
     }
 
     void exec() {
         int errno;
-        pthread_t t, cmc;
+        pthread_t t, cmc, con, net;
 
         /*errno = pthread_create(&t, nullptr, run_tap, tap);
         if (errno != 0) {
@@ -54,9 +54,21 @@ class Heracles {
             exit(-1);
         }*/
 
+        errno = pthread_create(&con, nullptr, Console::run, console);
+        if (errno != 0) {
+            print_err("[HARACLES] can't create console.");
+            exit(-1);
+        }
+
         /*errno = pthread_create(&cmc, nullptr, run_cm_ctr, cm_ctr);
         if (errno != 0) {
             print_err("[HARACLES] can't create core_memory_controller.");
+            exit(-1);
+        }*/
+
+        /*errno = pthread_create(&cmc, nullptr, NetworkController::run, net_ctr);
+        if (errno != 0) {
+            print_err("[HARACLES] can't create network_controller.");
             exit(-1);
         }*/
 

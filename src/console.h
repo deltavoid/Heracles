@@ -8,7 +8,7 @@ class Console
 
     Console(Tap* tap);
 
-    void run();
+    static void* run(void* arg);
 
 };
 

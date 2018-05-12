@@ -2,7 +2,7 @@
 #include <iostream>
 
 
-NetworkController::NetworkController()
+NetworkController::NetworkController(Tap* tap) : tap(tap)
 {
     default_device = "eno1";
     default_bandwidth = 1e9 / 8; //bytes
@@ -24,6 +24,7 @@ NetworkController::~NetworkController()
 
 void NetworkController::set_LC_procs(int pid)
 {
+    if  (LC_pid == pid)  return ;
     LC_pid = pid;
     network_driver->set_LC_procs(pid);
     std::cout << "NetworkController set_LC_procs " << LC_pid << std::endl;
@@ -31,6 +32,7 @@ void NetworkController::set_LC_procs(int pid)
 
 void NetworkController::set_BE_procs(int pid)
 {
+    if  (BE_pid == pid)  return ;
     BE_pid = pid;
     network_driver->set_BE_procs(pid);
     std::cout << "NetworkController set_BE_procs " << BE_pid << std::endl;
@@ -43,6 +45,9 @@ void* NetworkController::run(void* arg)
 
     while (true)
     {
+        This->set_LC_procs(This->tap->LC_pid());
+        This->set_BE_procs(This->tap->BE_pid());
+
         sleep(1);
 
         u64 LC_bandwidth = This->network_monitor->get_class_bytes(This->network_driver->LC_classid);
