@@ -16,6 +16,7 @@ double LoadInfo::load_percent() {
     return cur_load / max_load;
 }
 
+/*
 void InfoPuller::init_config() {
     std::string prefix = "/home/" + std::string(getlogin()) + "/heracles/";
 
@@ -78,6 +79,31 @@ LoadInfo InfoPuller::pull_load_info() {
     }
     max_load_in >> ret.max_load;
     max_load_in.close();
+
+    return ret;
+}
+*/
+
+InfoPuller::InfoPuller()
+{
+    print_log("[INFOPULLER] inited.");
+}
+
+LatencyInfo InfoPuller::pull_latency_info()
+{
+    LatencyInfo ret;
+    ret.cur_lat = 0.9;
+    ret.slo_lat = 1.0;
+
+    return ret;
+}
+
+
+LoadInfo InfoPuller::pull_load_info()
+{
+    LoadInfo ret;
+    ret.cur_load = 90;
+    ret.max_load = 100;
 
     return ret;
 }

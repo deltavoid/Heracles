@@ -46,6 +46,10 @@ class Tap {
 
     void set_state(TAPSTATE t);
 
+    void set_LC_pid(int pid);
+
+    void set_BE_pid(int pid);
+
     pid_t BE_pid() const { return _BE_pid; }
 
     pid_t LC_pid() const { return _LC_pid; }
@@ -54,7 +58,7 @@ class Tap {
 
     void cool_down_little();
 
-    int run();
+    //int run();
 };
 
 #endif

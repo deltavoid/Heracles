@@ -12,7 +12,7 @@ Tap::Tap(pid_t lc_pid) : _state(TAPSTATE::DISABLED) {
         print_err("[TAP] mutex init failed.");
     }
 
-    db_d = new DatabaseDriver();
+    //db_d = new DatabaseDriver();
 
     _BE_pid = -1;
     _LC_pid = (lc_pid == -1) ? get_opt("HERACLES_LC_PID", -1) : lc_pid;
@@ -29,7 +29,7 @@ void Tap::BE_end() {
     // clean other drivers' status
     _BE_pid = -1;
     cm_c->clear();
-    db_d->task_finish();
+    //db_d->task_finish();
 }
 
 void Tap::set_t_c(TopController *tc) {
@@ -56,11 +56,27 @@ void Tap::set_state(TAPSTATE t) {
     pthread_mutex_unlock(&mutex);
 }
 
+void Tap::set_LC_pid(int pid)
+{
+    pthread_mutex_lock(&mutex);
+    _LC_pid = pid;
+    pthread_mutex_unlock(&mutex);
+}
+
+void Tap::set_BE_pid(int pid)
+{
+    pthread_mutex_lock(&mutex);
+    _BE_pid = pid;
+    pthread_mutex_unlock(&mutex);
+}
+
 void Tap::cool_down_little() {
     assert(cpu_d != nullptr);
     cpu_d->BE_cores_dec(2);
 }
 
+
+/*
 int Tap::run() {
     while (true) {
         if (_BE_pid == -1) {
@@ -99,3 +115,4 @@ int Tap::run() {
         }
     }    
 }
+*/
