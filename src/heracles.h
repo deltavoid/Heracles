@@ -2,8 +2,10 @@
 #define HERACLES_H
 
 #include "core_memory_controller.h"
+#include "network_controller.h"
 #include "info_puller.h"
 #include "tap.h"
+#include "console.h"
 #include "top_controller.h"
 #include "helpers.h"
 #include <pthread.h>
@@ -23,8 +25,10 @@ class Heracles {
   private:
     Tap *tap;
     InfoPuller *puller;
+    Console *console;
 
     CoreMemoryController *cm_ctr;
+    NetworkController *net_ctr;
     TopController *t_ctr;
 
   public:
@@ -33,8 +37,10 @@ class Heracles {
         
         tap = new Tap(lc_pid);
         puller = new InfoPuller();
+        console = new Console(tap);
 
         //cm_ctr = new CoreMemoryController(tap, puller);
+        net_ctr = new NetworkController();
         t_ctr = new TopController(tap, puller);
     }
 
