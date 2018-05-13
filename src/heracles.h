@@ -66,11 +66,11 @@ class Heracles {
             exit(-1);
         }*/
 
-        /*errno = pthread_create(&cmc, nullptr, NetworkController::run, net_ctr);
+        errno = pthread_create(&cmc, nullptr, NetworkController::run, net_ctr);
         if (errno != 0) {
             print_err("[HARACLES] can't create network_controller.");
             exit(-1);
-        }*/
+        }
 
         t_ctr->run();
     }

@@ -108,5 +108,5 @@ void* NetworkMonitor::run(void* arg)
 
 u64 NetworkMonitor::get_class_bytes(u32 classid)
 {
-    return class_bytes[classid];
+    return class_bytes[classid] * 8;
 }

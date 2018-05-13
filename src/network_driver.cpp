@@ -88,7 +88,6 @@ NetworkDriver::NetworkDriver(string _device, u64 rate)
     system((string("tc qdisc del dev ") + device + string(" root")).c_str());
     system((string("tc qdisc add dev ") + device + string(" root handle 1: htb")).c_str());
 
-    rate *= 8;
     system((string("tc class add ") + 
             string(" dev ") + device + 
             string(" parent 1: ") + 
@@ -128,7 +127,6 @@ void NetworkDriver::set_LC_procs(int pid)
 
 void NetworkDriver::set_LC_bandwidth(u64 bw)
 {
-    bw *= 8;
     system((string("tc class change ") + 
             string(" dev ") + device + 
             string(" parent 1: ") + 
@@ -144,8 +142,6 @@ void NetworkDriver::set_BE_procs(int pid)
 
 void NetworkDriver::set_BE_bandwidth(u64 bw)
 {
-    cout << "set bandwidth: " << bw << endl;
-    bw *= 8;
     system((string("tc class change ") + 
             string(" dev ") + device + 
             string(" parent 1: ") + 
