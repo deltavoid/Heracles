@@ -42,6 +42,18 @@ bool NetworkDriver::init_dir(string path)
     return true;
 }
 
+bool NetworkDriver::rm_dir(string path)
+{
+    int res = access(path.c_str(), F_OK);
+    if  (res == 0)
+    {   res = rmdir(path.c_str());
+        if  (res != 0)
+        {   //print_error();
+            return false;
+        } 
+    }
+}
+
 bool NetworkDriver::write_to_file(string file_path, string content)
 {
     ofstream file;
@@ -59,12 +71,11 @@ bool NetworkDriver::write_to_file(string file_path, string content)
 
 
 
-NetworkDriver::NetworkDriver(string name, string _device, u64 rate)
+NetworkDriver::NetworkDriver(string _device, u64 rate)
 {
     device = _device;
-    LC_path = cgroup_path + name + string("/LC/");
-    BE_path = cgroup_path + name + string("/BE/");
-    init_dir(cgroup_path);
+    LC_path = cgroup_path + string("/LC/");
+    BE_path = cgroup_path + string("/BE/");
     init_dir(LC_path);
     init_dir(BE_path);
 
@@ -106,6 +117,8 @@ NetworkDriver::NetworkDriver(string name, string _device, u64 rate)
 
 NetworkDriver::~NetworkDriver()
 {
+    rm_dir(LC_path);
+    rm_dir(BE_path);
 }
 
 void NetworkDriver::set_LC_procs(int pid)

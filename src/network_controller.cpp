@@ -4,11 +4,11 @@
 
 NetworkController::NetworkController(Tap* tap) : tap(tap)
 {
-    default_device = "eno1";
+    default_device = "ens33";
     default_bandwidth = 1e9 / 8; //bytes
     usable_bandwidth = default_bandwidth - default_bandwidth / 10;
 
-    network_driver = new NetworkDriver("heracles", default_device, default_bandwidth);
+    network_driver = new NetworkDriver(default_device, default_bandwidth);
     network_monitor = new NetworkMonitor(default_device);
 
     int res = pthread_create(&run_thread, NULL, run, (void*)this);

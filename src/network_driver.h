@@ -17,10 +17,11 @@ class NetworkDriver
     u32 BE_classid;
     std::string device;
 
-    NetworkDriver(std::string name, std::string _device, u64 rate);  //rate bytes
+    NetworkDriver(std::string _device, u64 rate);  //rate bytes
     ~NetworkDriver();
 
     static bool init_dir(std::string path);
+    static bool rm_dir(std::string path);
     static bool write_to_file(std::string file_path, std::string content);
 
     void set_LC_procs(int pid);
