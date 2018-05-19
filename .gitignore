@@ -1,2 +1,9 @@
+
+*.o
+*.d
+*.so*
+
 .DS_Store
 tasks.db
+lib/so/
+heracles
