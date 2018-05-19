@@ -1,9 +1,9 @@
 #!/bin/bash
 
-HERACLES_LATENCY_FILE=/home/zcy/tailbench/tailbench-v0.9/xapian/lc.latency.95
-HERACLES_MAX_LATENCY_FILE=/home/zcy/tailbench/tailbench-v0.9/xapian/lc.latency.slo
-HERACLES_LOAD_FILE=/home/zcy/tailbench/tailbench-v0.9/xapian/lc.load.cur
-HERACLES_MAX_LOAD_FILE=/home/zcy/tailbench/tailbench-v0.9/xapian/lc.load.max
+HERACLES_LATENCY_FILE=xapian/lc.latency.95
+HERACLES_MAX_LATENCY_FILE=xapian/lc.latency.slo
+HERACLES_LOAD_FILE=xapian/lc.load.cur
+HERACLES_MAX_LOAD_FILE=xapian/lc.load.max
 
 HERACLES_DRAM_LIMIT=10240
 
@@ -31,7 +31,7 @@ HERACLES_IS_NUMA=1
 HERACLES_DB_PATH=tasks.db
 
 NET_SLEEP_TIME=2
-NET_TOTAL_BANDWIDTH=90000000
+NET_TOTAL_BANDWIDTH=1000000000
 NET_LC_CLASSID=0x10003
 NET_BE_CLASSID=0x10004
 NIC_NAME=ens2f1

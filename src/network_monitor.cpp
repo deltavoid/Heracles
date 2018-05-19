@@ -45,6 +45,12 @@ bool NetworkMonitor::init_config() {
     device = get_opt<std::string>("NIC_NAME", "lo");
     LC_classid = get_opt<uint32_t>("NET_LC_CLASSID", 0x10003);
     BE_classid = get_opt<uint32_t>("NET_BE_CLASSID", 0x10004);
+
+    LC_classid = 0x10003;
+    BE_classid = 0x10004;
+    std::cout << "NetworkDriver" << std::endl
+              << "LC_classid: " << LC_classid << std::endl
+              << "BE_classid: " << BE_classid << std::endl;
     return true;
 }
 
@@ -71,9 +77,9 @@ void NetworkMonitor::run() {
     print_err("[NET_MONITOR] run() ends! error.");
 }
 
-uint64_t NetworkMonitor::LC_bytes() { return class_bytes[LC_classid]; }
+uint64_t NetworkMonitor::LC_bw() { return class_bytes[LC_classid] * 8; }
 
-uint64_t NetworkMonitor::BE_bytes() { return class_bytes[BE_classid]; }
+uint64_t NetworkMonitor::BE_bw() { return class_bytes[BE_classid] * 8; }
 
 const std::string NetworkMonitor::BPF_PROGRAM = R"(
 #include <bcc/proto.h>

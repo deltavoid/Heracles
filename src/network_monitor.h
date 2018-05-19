@@ -35,8 +35,8 @@ class NetworkMonitor {
 
     void run();
 
-    uint64_t LC_bytes();
-    uint64_t BE_bytes();
+    uint64_t LC_bw();
+    uint64_t BE_bw();
 };
 
 #endif

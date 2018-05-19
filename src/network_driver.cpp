@@ -23,6 +23,13 @@ bool NetworkDriver::init_config() {
     total_bw = get_opt<uint64_t>("NET_TOTAL_BANDWIDTH", 1e9);
     LC_classid = get_opt<uint32_t>("NET_LC_CLASSID", 0x10003);
     BE_classid = get_opt<uint32_t>("NET_BE_CLASSID", 0x10004);
+    
+    LC_classid = 0x10003;
+    BE_classid = 0x10004;
+
+    std::cout << "NetworkDriver" << std::endl
+              << "LC_classid: " << LC_classid << std::endl
+              << "BE_classid: " << BE_classid << std::endl;
     return true;
 }
 
@@ -145,6 +152,8 @@ bool NetworkDriver::set_BE_bw(uint64_t bw) {
     command = str_format(
         "tc class change dev %s parent 1: classid 1:%u htb rate %llu", device.c_str(),
         BE_classid % (1 << 16), bw);
+    
+    //std::cout << "set_BE_bw command: " << command << std::endl;
 
     int res = system(command.c_str());
     if(res != 0) {
