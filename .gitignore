@@ -5,5 +5,5 @@
 
 .DS_Store
 tasks.db
-lib/so/
+lib/so/libpqos.so
 heracles

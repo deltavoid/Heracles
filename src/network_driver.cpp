@@ -21,15 +21,8 @@ bool NetworkDriver::init_config() {
     device = get_opt<std::string>("NIC_NAME", "lo");
     cgroup_path = get_opt<std::string>("CGROUPS_DIR", "/sys/fs/cgroup");
     total_bw = get_opt<uint64_t>("NET_TOTAL_BANDWIDTH", 1e9);
-    LC_classid = get_opt<uint32_t>("NET_LC_CLASSID", 0x10003);
-    BE_classid = get_opt<uint32_t>("NET_BE_CLASSID", 0x10004);
-    
     LC_classid = 0x10003;
     BE_classid = 0x10004;
-
-    std::cout << "NetworkDriver" << std::endl
-              << "LC_classid: " << LC_classid << std::endl
-              << "BE_classid: " << BE_classid << std::endl;
     return true;
 }
 
@@ -71,9 +64,7 @@ bool NetworkDriver::init_classid() {
             return false;
         }
         classid_f << ids[i] << std::endl;
-        //if  (i == 0)  classid_f << "0x10003" << std::endl;
-        //else if  (i == 1)  classid_f << "0x10004" << std::endl;
-        
+   
         classid_f.close();
     }
     return true;
