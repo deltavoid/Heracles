@@ -58,7 +58,7 @@ bool CacheDriver::init_env() {
 }
 
 bool CacheDriver::init_masks() {
-    sys_bits = min_bits / 8;
+    sys_bits = 1;
     BE_bits = 0;
     LC_bits = min_bits - sys_bits;
 
@@ -74,9 +74,9 @@ bool CacheDriver::update_association(size_t BE_core_num, size_t sys_core_num,
     int ret;
     for (size_t i = 0; i < total_core_num; ++i) {
         if (0 <= i && i < BE_core_num) {
-            ret = pqos_alloc_assoc_set(i, LC_CLASS_ID);
-        } else if (BE_core_num <= i && i < total_core_num - sys_core_num) {
             ret = pqos_alloc_assoc_set(i, BE_CLASS_ID);
+        } else if (BE_core_num <= i && i < total_core_num - sys_core_num) {
+            ret = pqos_alloc_assoc_set(i, LC_CLASS_ID);
         } else {
             ret = pqos_alloc_assoc_set(i, SYS_CLASS_ID);
         }
@@ -132,16 +132,16 @@ bool CacheDriver::update_allocation() {
     tab[2].cdp = 0;
     tab[2].u.ways_mask = LC_mask;
 
-    print_log("[CACHEDRIVER] allocation: LC_mask:0x%5x BE_mask: 0x%05x "
+    print_log("[CACHE_DRIVER] allocation: LC_mask:0x%5x BE_mask: 0x%05x "
               "sys_mask:0x%05x",
               LC_mask, BE_mask, sys_mask);
-    print_log("[CACHEDRIVER] allocation: LC_bits:%u BE_bits: %u sys_bits: %u",
+    print_log("[CACHE_DRIVER] allocation: LC_bits:%u BE_bits: %u sys_bits: %u",
               LC_bits, BE_bits, sys_bits);
 
     ret = pqos_l3ca_set(*sockets, 3, tab);
     if (ret != PQOS_RETVAL_OK) {
         print_err(
-            "[CACHEDRIVER] update_allocation() error setting CLOS masks.");
+            "[CACHE_DRIVER] update_allocation() error setting CLOS masks.");
     }
 
     if (!intel_fini()) {

@@ -8,6 +8,7 @@
 class CpuDriver {
   private:
     std::string path;
+    size_t max_BE_cores;
 
     std::string mem_data;
 
