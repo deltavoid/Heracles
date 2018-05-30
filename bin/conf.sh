@@ -1,9 +1,10 @@
 #!/bin/bash
 
-HERACLES_LATENCY_FILE=xapian/lc.latency.95
-HERACLES_MAX_LATENCY_FILE=xapian/lc.latency.slo
-HERACLES_LOAD_FILE=xapian/lc.load.cur
-HERACLES_MAX_LOAD_FILE=xapian/lc.load.max
+LC_PROGRAM_PATH=../../../Tailbench/tailbench-v0.9/silo
+HERACLES_LATENCY_FILE=${LC_PROGRAM_PATH}/lc.latency.95
+HERACLES_MAX_LATENCY_FILE=${LC_PROGRAM_PATH}/lc.latency.slo
+HERACLES_LOAD_FILE=${LC_PROGRAM_PATH}/lc.load.cur
+HERACLES_MAX_LOAD_FILE=${LC_PROGRAM_PATH}/lc.load.max
 
 HERACLES_DRAM_LIMIT=10240
 
