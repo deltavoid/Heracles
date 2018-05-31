@@ -1,0 +1,148 @@
+zhangqianyu@oslab-Xeon:~/WorkSpace/LabeledKernel/Heracles/heracles/bin$ ./dbop.sh -a 'iperf; -c 192.168.3.2 -t 50'
+zhangqianyu@oslab-Xeon:~/WorkSpace/LabeledKernel/Heracles/heracles/bin$ ./dbop.sh -l
+ ID | PROGRAM | PARAM | STATE
+----+---------+-------+-------
+5 | iperf |  -c 192.168.3.2 -t 50 | ready
+zhangqianyu@oslab-Xeon:~/WorkSpace/LabeledKernel/Heracles/heracles/bin$ sudo ./run.sh 11500
+
+
+[ LOG ] - System start...
+[ LOG ] - [ENV] HERACLES_DB_PATH = tasks.db
+[ LOG ] - [DBDRIVER] inited.
+[ LOG ] - [TAP] inited.
+[ LOG ] - [ENV] HERACLES_LATENCY_FILE = ../../../Tailbench/tailbench-v0.9/silo/lc.latency.95
+[ LOG ] - [ENV] HERACLES_MAX_LATENCY_FILE = ../../../Tailbench/tailbench-v0.9/silo/lc.latency.slo
+[ LOG ] - [ENV] HERACLES_LOAD_FILE = ../../../Tailbench/tailbench-v0.9/silo/lc.load.cur
+[ LOG ] - [ENV] HERACLES_MAX_LOAD_FILE = ../../../Tailbench/tailbench-v0.9/silo/lc.load.max
+[ LOG ] - [INFOPULLER] inited.
+[ LOG ] - [ENV] NET_TOTAL_BANDWIDTH = 900000000
+[ LOG ] - [ENV] NET_SLEEP_TIME = 2
+[ LOG ] - [ENV] NIC_NAME = enp4s0f1
+[ LOG ] - [ENV] CGROUPS_DIR = /sys/fs/cgroup
+[ LOG ] - [ENV] NET_TOTAL_BANDWIDTH = 900000000
+[ LOG ] - [NET_DRIVER] inited.
+In file included from /virtual/main.c:5:
+In file included from include/net/cls_cgroup.h:19:
+In file included from include/net/sock.h:58:
+include/linux/memcontrol.h:580:31: warning: implicit conversion from enumeration type 'enum node_stat_item' to different enumeration type
+      'enum memcg_stat_item' [-Wenum-conversion]
+        __mod_memcg_state(pn->memcg, idx, val);
+        ~~~~~~~~~~~~~~~~~            ^~~
+include/linux/memcontrol.h:593:29: warning: implicit conversion from enumeration type 'enum node_stat_item' to different enumeration type
+      'enum memcg_stat_item' [-Wenum-conversion]
+        mod_memcg_state(pn->memcg, idx, val);
+        ~~~~~~~~~~~~~~~            ^~~
+include/linux/memcontrol.h:605:38: warning: implicit conversion from enumeration type 'enum node_stat_item' to different enumeration type
+      'enum memcg_stat_item' [-Wenum-conversion]
+        __mod_memcg_state(page->mem_cgroup, idx, val);
+        ~~~~~~~~~~~~~~~~~                   ^~~
+include/linux/memcontrol.h:618:36: warning: implicit conversion from enumeration type 'enum node_stat_item' to different enumeration type
+      'enum memcg_stat_item' [-Wenum-conversion]
+        mod_memcg_state(page->mem_cgroup, idx, val);
+        ~~~~~~~~~~~~~~~                   ^~~
+include/linux/memcontrol.h:639:40: warning: implicit conversion from enumeration type 'enum memcg_stat_item' to different enumeration type
+      'enum vm_event_item' [-Wenum-conversion]
+                count_memcg_events(page->mem_cgroup, idx, 1);
+                ~~~~~~~~~~~~~~~~~~                   ^~~
+5 warnings generated.
+[ LOG ] - [ENV] NIC_NAME = enp4s0f1
+[ LOG ] - [ENV] NET_LC_CLASSID =
+[ LOG ] - [ENV] NET_BE_CLASSID =
+NetworkDriver
+LC_classid: 65539
+BE_classid: 65540
+[ LOG ] - [NET_MONITOR] inited.
+[ LOG ] - [NET_CONTROLLER] total_bw: 900000000
+[ LOG ] - [NET_CONTROLLER] inited.
+[ LOG ] - [ENV] HERACLES_DRAM_LIMIT = 80000
+[ LOG ] - [ENV] CORE_MEMORY_SLEEP_TIME = 5
+[ LOG ] - [CACHE_DRIVER] num_ways: 20
+[ LOG ] - [CACHE_DRIVER] num_classes: 16
+[ LOG ] - [CACHE_DRIVER] way_size: 2097152
+[ LOG ] - [CACHE_DRIVER] LC_mask:0xffffe BE_mask: 0x00000 sys_mask:0x00001 min_bits:20
+[ LOG ] - [CACHE_DRIVER] inited.
+[ LOG ] - [ENV] CGROUPS_DIR = /sys/fs/cgroup
+[ LOG ] - [ENV] HERACLES_MAX_BE_CORE_NUM = 3
+[ LOG ] - [ENV] HERACLES_IDLE_CORE_NUM = 1
+[ LOG ] - [ENV] HERACLES_TOTAL_CORE_NUM = 9
+[ LOG ] - [CPU_DRIVER] [LC] cgroup.proc: 11500 cpuset.cpus: 0-7
+[ LOG ] - [CPU_DRIVER] [BE] cgroup.proc: NULL cpuset.cpus: NULL
+[ LOG ] - [ENV] HERACLES_IS_NUMA = 1
+[ LOG ] - [ENV] HERACLES_TOTAL_CORE_NUM = 9
+[ LOG ] - [CMC] inited.
+[ LOG ] - [ENV] TOP_SLEEP_TIME = 10
+[ LOG ] - [ENV] TOP_LOAD_DISABLE_BOUND = 0.85
+[ LOG ] - [ENV] TOP_LOAD_ENABLE_BOUND = 0.7
+[ LOG ] - [ENV] TOP_SLOW_BE_BOUND = 0.4
+[ LOG ] - [NET_CONTROLLER] LC_bw: 5477208 | BE_bw: 0 | new_BE_bw: 804522792
+[ LOG ] - [NET_CONTROLLER] LC_bw: 5374512 | BE_bw: 0 | new_BE_bw: 804625488
+[ LOG ] - [CMC] total_bw =   28.2
+[ LOG ] - [CMC] tap disabled detected. clearing...
+[ LOG ] - [CPU_DRIVER] [BE] cgroup.proc: NULL cpuset.cpus: NULL
+[ LOG ] - [CPU_DRIVER] [LC] cgroup.proc: 11500 cpuset.cpus: 0-7
+[ LOG ] - [NET_CONTROLLER] LC_bw: 5366856 | BE_bw: 0 | new_BE_bw: 804633144
+[ LOG ] - [NET_CONTROLLER] LC_bw: 5524992 | BE_bw: 0 | new_BE_bw: 804475008
+[ LOG ] - [TOP] slack: 99.9% load_percent:60.7%
+[ LOG ] - [TOP] load_percent < enable bound. enable BE.
+[ LOG ] - [TAP] new BE task: iperf
+[ LOG ] - [BE] new task executing...
+[ LOG ] - [CPU_DRIVER] [LC] cgroup.proc: 11500 cpuset.cpus: 1-7
+[ LOG ] - [CPU_DRIVER] [BE] cgroup.proc: 11557 cpuset.cpus: 0-0
+iperf: ignoring extra argument --
+------------------------------------------------------------
+Client connecting to 192.168.3.2, TCP port 5001
+TCP window size: 85.0 KByte (default)
+------------------------------------------------------------
+[  3] local 192.168.3.1 port 41722 connected with 192.168.3.2 port 5001
+[ LOG ] - [NET_CONTROLLER] LC_bw: 5447112 | BE_bw: 0 | new_BE_bw: 804552888
+[ LOG ] - [CPU_DRIVER] BE_cores_inc(1) success -> 1
+[ LOG ] - [TAP] waiting for BE(pid=11557) to be finished...
+[ LOG ] - [CMC] total_bw =   24.5
+[ LOG ] - [CMC] GROW_LLC.
+[ LOG ] - [CACHE_DRIVER] allocation: LC_mask:0x7fffe BE_mask: 0x80000 sys_mask:0x00001
+[ LOG ] - [CACHE_DRIVER] allocation: LC_bits:18 BE_bits: 1 sys_bits: 1
+[ LOG ] - [NET_CONTROLLER] LC_bw: 4069824 | BE_bw: 770710416 | new_BE_bw: 805930176
+[ LOG ] - [CMC] cache growth causes bw increasing. roll_back().
+[ LOG ] - [CACHE_DRIVER] allocation: LC_mask:0x7fffe BE_mask: 0x80000 sys_mask:0x00001
+[ LOG ] - [CACHE_DRIVER] allocation: LC_bits:18 BE_bits: 1 sys_bits: 1
+[ LOG ] - [NET_CONTROLLER] LC_bw: 4184928 | BE_bw: 771754032 | new_BE_bw: 805815072
+[ LOG ] - [NET_CONTROLLER] LC_bw: 3812688 | BE_bw: 771754032 | new_BE_bw: 806187312
+[ LOG ] - [CMC] total_bw =   97.8
+[ LOG ] - [CMC] GROW_CORES.
+[ LOG ] - [CMC] predict BW needed:  175.5
+[ LOG ] - [NET_CONTROLLER] LC_bw: 3780216 | BE_bw: 772275840 | new_BE_bw: 806219784
+[ LOG ] - [TOP] slack: -16.1% load_percent:50.5%
+[ LOG ] - [NET_CONTROLLER] LC_bw: 4347288 | BE_bw: 772275840 | new_BE_bw: 805652712
+[ LOG ] - [NET_CONTROLLER] LC_bw: 4283136 | BE_bw: 771754032 | new_BE_bw: 805716864
+[ LOG ] - [CMC] total_bw =  134.5
+[ LOG ] - [CMC] GROW_CORES.
+[ LOG ] - [CMC] predict BW needed:  206.8
+[ LOG ] - [NET_CONTROLLER] LC_bw: 3928056 | BE_bw: 771754032 | new_BE_bw: 806071944
+[ LOG ] - [NET_CONTROLLER] LC_bw: 4237464 | BE_bw: 771754032 | new_BE_bw: 805762536
+[ LOG ] - [NET_CONTROLLER] LC_bw: 4035240 | BE_bw: 771232224 | new_BE_bw: 805964760
+[ LOG ] - [CMC] total_bw =  134.8
+[ LOG ] - [CMC] GROW_CORES.
+[ LOG ] - [CMC] predict BW needed:  221.8
+[ LOG ] - [TOP] slack: -120.1% load_percent:51.8%
+[ LOG ] - [TOP] slack < 0. disable BE. cooling down...
+[ LOG ] - [TAP] pid 11557 finished.
+[ LOG ] - [CPU_DRIVER] [BE] cgroup.proc: NULL cpuset.cpus: NULL
+[ LOG ] - [CPU_DRIVER] [LC] cgroup.proc: 11500 cpuset.cpus: 0-7
+[ LOG ] - [NET_CONTROLLER] LC_bw: 4018344 | BE_bw: 771232224 | new_BE_bw: 805981656
+[ LOG ] - [NET_CONTROLLER] LC_bw: 9814464 | BE_bw: 0 | new_BE_bw: 800185536
+[ LOG ] - [CMC] total_bw =   19.8
+[ LOG ] - [CMC] tap disabled detected. clearing...
+[ LOG ] - [CPU_DRIVER] [BE] cgroup.proc: NULL cpuset.cpus: NULL
+[ LOG ] - [CPU_DRIVER] [LC] cgroup.proc: 11500 cpuset.cpus: 0-7
+[ LOG ] - [NET_CONTROLLER] LC_bw: 5370816 | BE_bw: 0 | new_BE_bw: 804629184
+[ LOG ] - [NET_CONTROLLER] LC_bw: 5239608 | BE_bw: 0 | new_BE_bw: 804760392
+[ LOG ] - [NET_CONTROLLER] LC_bw: 5078304 | BE_bw: 0 | new_BE_bw: 804921696
+[ LOG ] - [CMC] total_bw =   37.2
+[ LOG ] - [CMC] tap disabled detected. clearing...
+[ LOG ] - [CPU_DRIVER] [BE] cgroup.proc: NULL cpuset.cpus: NULL
+[ LOG ] - [CPU_DRIVER] [LC] cgroup.proc: 11500 cpuset.cpus: 0-7
+[ LOG ] - [TOP] slack: 99.9% load_percent:60.7%
+[ LOG ] - [TOP] load_percent < enable bound. enable BE.
+[ LOG ] - [NET_CONTROLLER] LC_bw: 5247792 | BE_bw: 0 | new_BE_bw: 804752208
+[ LOG ] - [TAP] no more ready BE tasks! Heracles will exit.
+zhangqianyu@oslab-Xeon:~/WorkSpace/LabeledKernel/Heracles/heracles/bin$

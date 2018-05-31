@@ -7,7 +7,7 @@ NetworkController::NetworkController(Tap *tap) : tap(tap) {
 
     assert(init_drivers() == true);
 
-    available_bw = total_bw - total_bw / 10;
+    available_bw = total_bw - total_bw / 10 * 2;
 
     print_log("[NET_CONTROLLER] total_bw: %llu", total_bw);
     print_log("[NET_CONTROLLER] inited.");
