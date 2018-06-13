@@ -27,7 +27,7 @@ HERACLES_TOTAL_CORE_NUM=9
 # e.g. set TOTAL_CORE_NUM=16 means core [0, 15] will be used for 
 #      heracles even if there're more than 16 cores on local machine.
 
-HERACLES_MAX_BE_CORE_NUM=3
+HERACLES_MAX_BE_CORE_NUM=6
 
 HERACLES_IS_NUMA=1
 
